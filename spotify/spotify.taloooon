@@ -1,0 +1,7 @@
+app: spotify
+-
+volume up: key(ctrl-up)
+volume down: key(ctrl-down)
+(skip | song next): key(ctrl-right)
+song last: key(ctrl-left)
+(pause|play): key(space)
