@@ -4,8 +4,9 @@ parrot_config = {
     "palate_click": ('left click',lambda: actions.mouse_click(0)),
     "tut": ('right click',lambda: actions.mouse_click(1)),
     "clock": ('repeat last',lambda: actions.core.repeat_phrase(1)),
-    "buzz:db_300": ('start drag', lambda : actions.user.mouse_drag(0)),
-    "buzz_stop:db_300": ('end drag', lambda : actions.user.mouse_drag_end()),
+    "alveolar_click": ('undue', lambda : actions.key("ctrl-z")),
+    # "buzz:db_300": ('start drag', lambda : actions.user.mouse_drag(0)),
+    # "buzz_stop:db_300": ('end drag', lambda : actions.user.mouse_drag_end()),
     # "eh eh": ('test',lambda: print('hello this is another test')),
 
 }

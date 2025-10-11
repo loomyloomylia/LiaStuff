@@ -147,12 +147,12 @@ class GenericActions:
         input variable is for specifying multiple kinds in the same program"""
         actions.skip()
 
-    def game_stop():
-        """Stops all continuous game actions"""
-        actions.user.release_all_directional_buttons()
+    def game_stop(except_for: str = None):
+        """Stops all continuous game actions. If except_for is defined then do not release that button."""
+        actions.user.release_all_directional_buttons(except_for)
         actions.user.stop_all_mouse_jobs()
         for key, value in held_button_state.items():
-            if value == True:
+            if value == True and (except_for is None or key != except_for):
                 actions.user.button_up(key)
 
     def game_hover_point(word: str):

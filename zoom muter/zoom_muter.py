@@ -26,7 +26,7 @@ class Actions:
 
     def kill_zoom():
         """kills that goddamn mother fucking zoom workspace app instead of minimizing to tray"""
-        run_batch_file("C:\\Users\\Lia Hepler Mackey\\AppData\\Roaming\\talon\\user\\Lia Stuff\\zoom muter\\killzoom.bat")
+        run_batch_file("C:\\Users\\Lia Hepler Mackey\\AppData\\Roaming\\talon\\user\\LiaStuff\\zoom muter\\killzoom.bat")
         
 """Okay what the fuck am I going to do
  things I need to do: 
@@ -54,18 +54,25 @@ def stop_entering_text():
 default_config = {
     "palate_click": ("use", lambda: actions.mouse_click(0)),
     "clock": ('repeat last',lambda: actions.core.repeat_phrase(1)),
-    "tut": ('undue', lambda : actions.key("ctrl-z")),
+    "tut": ("right click", lambda: actions.mouse_click(1)),
+    "alveolar_click": ('undue', lambda : actions.key("ctrl-z")),
+    # "buzz:db_400": ('start drag', lambda : actions.user.mouse_drag(0)),
+    # "buzz_stop:db_400": ('end drag', lambda : actions.user.mouse_drag_end()),
+    # "hiss:db_400": ('scroll up', lambda : actions.user.mouse_scroll_up_continuous()),
+    # "hiss_stop:db_300": ('scroll end', lambda : actions.user.mouse_scroll_stop()),
+    # "shush:db_400": ('scroll down', lambda : actions.user.mouse_scroll_down_continuous()),
+    # "shush_stop:db_300": ('scroll end', lambda : actions.user.mouse_scroll_stop()),
     #"tut": ('begin entering text', lambda: begin_entering_text()),
     #"shush:db_350": ("drag start", lambda: actions.user.mouse_drag(0)),
     #"shush_stop:db_250": ("drag end", lambda: actions.user.mouse_drag_end()),
 }
 
-text_config = {
-    "palate_click": ("use", lambda: actions.mouse_click(0)),
-    "clock": ('repeat last',lambda: actions.core.repeat_phrase(1)),
-    "tut": ('undue', lambda : actions.key("ctrl-z")),
-    #"tut": ('begin entering text', lambda: stop_entering_text()),
-}
+# text_config = {
+#     "palate_click": ("use", lambda: actions.mouse_click(0)),
+#     "clock": ('repeat last',lambda: actions.core.repeat_phrase(1)),
+#     "tut": ('undue', lambda : actions.key("ctrl-z")),
+#     #"tut": ('begin entering text', lambda: stop_entering_text()),
+# }
 
 parrot_config = default_config
 

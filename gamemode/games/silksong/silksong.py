@@ -84,7 +84,7 @@ default_config = {
     "oh": ('move right', lambda : actions.user.movement_button_down("right")),
     # "oo": ('up', lambda : actions.user.movement_button_down("up")),
     # "er": ('down' , lambda : actions.user.movement_button_down'switch("down")),
-    "eh": ('stop moving', lambda : actions.user.game_stop()),
+    "eh:th_50": ('stop moving', lambda : actions.user.game_stop(except_for = "z")),
     "shush:th_250": ('switch horizontal', lambda : actions.user.switch_horizontal()),       
     "hiss": ('dash start', lambda : actions.user.button_down("c")),# was oo
     "hiss_stop:db_250": ('dash start', lambda : actions.user.button_up("c")),
@@ -93,12 +93,12 @@ default_config = {
     f"palate_click:th_{ATTACK_COOLDOWN}": ('attack neutral', lambda : actions.user.button("x")),
     f"tut:th_{ATTACK_COOLDOWN}": ('attack up', lambda : directional_attack("up")),
     f"clock:th_{ATTACK_COOLDOWN}": ('attack down', lambda : directional_attack("down")),
-    "alveolar_click": ('silk skill', lambda : actions.user.button("f")),
+    "t": ('silk skill', lambda : actions.user.button("f")),
     "oo:th_250": ('tool up', lambda : directional_attack("up", "f")),# was hiss
 
-    "mm": ('bind',lambda : actions.user.button("a")),
+    "mm:th_250": ('bind',lambda : actions.user.button("a")),
     
-    "buzz": ('interact', lambda : actions.user.movement_button("up")),
+    "buzz:th_250": ('interact', lambda : actions.user.movement_button("up")),
     # "buzz ee": ('quick map', lambda : actions.user.button_toggle("tab")),
     # "buzz aa": ('menu', lambda : actions.user.button("m")),
     
@@ -193,8 +193,7 @@ class SilksongActions:
 
     def foot_switch_top_down():
         """Foot switch button left:down"""
-        actions.user.button_down("c")
+        actions.user.game_stop("z")
 
     def foot_switch_top_up(held: bool):
         """Foot switch button left:up"""
-        actions.user.button_up("c")
