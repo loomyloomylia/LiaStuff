@@ -1,0 +1,15 @@
+This is a very sloppy dev diary detailing the changes that I made to the silksong setup overtime
+Except for basic movement attacks and horizontal switching, all functions were added as I acquired the ability to do them in game
+ I used ee for the dash noise at first,  oo step after that common step then hissing
+
+ The silk skill noise used to be the t sound,  but then I removed that sound so I used oo after that
+I added the menu mode after about an hour or two of playing
+ I added the dash attack sound right after getting reaper crest
+
+ from the beginning I have used mods to let me set my spawn point manually, keep rosaries on death, and fast travel between benches
+I may add a mod to let me have infinite shards but I have not done this yetthe game is very playable with my setup without these but 
+I found that I enjoyed it more when not having to worry about the souls like runback
+
+I seldom use the spawn point setting  mode
+
+ I switched to a different parrot model with seventeen sounds instead of fourteen at around the point where I was fighting fourth chorus
