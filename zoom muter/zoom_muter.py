@@ -98,10 +98,17 @@ class DrawingMode:
 
     def foot_switch_top_down():
         """Foot switch button center:down"""
+        if actions.user.get_global_variable("scroll_state"):
+            actions.user.mouse_scroll_up_continuous()
+            actions.user.set_global_variable("scroll_state", False)
+        else:
+            actions.user.mouse_scroll_down_continuous()
+            actions.user.set_global_variable("scroll_state", True)
 
 
     def foot_switch_top_up(held: bool):
           """Foot switch button center:up"""
+          actions.user.mouse_scroll_stop()
 
 
     def foot_switch_left_down():
@@ -114,7 +121,13 @@ class DrawingMode:
          
     def foot_switch_right_down():
          """Foot switch button right:down"""
-         actions.speech.toggle()
+         if actions.speech.enabled():
+            actions.user.sleep_mode_color_preset()
+            actions.speech.disable()
+         else:
+            actions.speech.enable()
+            actions.user.wake_up_color_preset()
+            
 
 
     def foot_switch_right_up(held: bool):
