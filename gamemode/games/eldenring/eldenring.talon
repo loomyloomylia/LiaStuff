@@ -3,7 +3,7 @@ and not mode: sleep
 user.active_manual_game: eldenring
 -
 settings(): 
-    key_hold = 100
+    key_hold = 150
     user.game_dpad_mode = "WASD"
     user.dpad_reassert_direction_possible = true
 
@@ -15,7 +15,7 @@ key(space):
     print("eldenring working")
 
 
-parrot(palate_click_game):
+parrot(palate_click):
     user.parrot_config_noise("palate_click")
 
 parrot(clock):
@@ -38,7 +38,6 @@ parrot(aa):
 
 parrot(aa:stop):
     user.parrot_config_noise("aa_stop")
-
 parrot(ee):
     user.parrot_config_noise("ee")
     

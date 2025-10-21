@@ -8,16 +8,7 @@ and not mode: sleep
 user.active_manual_game: eldenring
 """
 
-"""Click for light attack, clock for heady, perhaps double clock for charge heavy? Unsure if this will cause an unacceptable amount of latency, tut for ash  of war
-I can do buzz for interact,
-Perhaps I can just use click and clockFor attack. Clock for heavy, clock clock for charged, clock click for ash. then I could use tut for something else.The problem with this is that I cannot use parries because there will be latency on the ash of war can I bay wear
-
- center foot pedal for dodge
- left foot pedal for bloc
-right for dpad context switch
-
-Unused: oo, buzz, mm, t
-
+"""
 Actions Needing Mapping:
 jump
     - shush
@@ -64,7 +55,7 @@ def paired_command_wrapper(first: Callable, second: Callable):
     first()
     second()
 
-actions.user.set_global_variable("stance_active", False)
+# awctions.user.set_global_variable("stance_active", False)
 
 def state_machine_mode_switcher(mode: str):
     """This function is a mode switcher that enforces a certain flow to the mode switching so that 
@@ -76,30 +67,36 @@ def state_machine_mode_switcher(mode: str):
     If input is "toggle" Then it will switch between stance and default
     """
     current_mode = actions.user.parrot_config_get_mode()
+    stance_state = actions.user.get_global_variable("stance_active")
     match mode:
         case "default":
             actions.user.parrot_config_set_mode("default")
+            print("switching to default")
             actions.user.set_global_variable("stance_active", False)
         case "stance":
             actions.user.parrot_config_set_mode("stance")
+            print("switching to stance")
             actions.user.set_global_variable("stance_active", True)
         case "item":
             if current_mode == "default" or current_mode == "stance":
                 actions.user.parrot_config_set_mode("item")
+                print("switching to item")
         case "menu":
             if current_mode == "default" or current_mode == "stance":
                 actions.user.parrot_config_set_mode("menu")
+                print("switching to menu")
         case "toggle":
-            if current_mode == "default":
+            if not stance_state:
                 actions.user.parrot_config_set_mode("stance")
+                print("switching to stance")
                 actions.user.set_global_variable("stance_active", True)
-            elif current_mode == "stance":
+            else:
                 actions.user.parrot_config_set_mode("default")
+                print("switching to default")
                 actions.user.set_global_variable("stance_active", False)
         case _:
             print("Mode name not recognized for game eldenring")
                 
-    
 
 default_config = {
     "aa:th_150": ('move left' , lambda : actions.user.movement_button_down("left")),
@@ -114,12 +111,12 @@ default_config = {
 
     "buzz:th_250": ('interact', lambda : actions.user.button("e")),
     "mm:th_400": ('lock on', lambda : actions.user.button("q")),
-    "zh": ('jump', lambda : actions.user.button("f")),
+    "zh:th_250": ('jump', lambda : actions.user.button("f")),
     "high_whistle:th_500": ('escape', lambda : actions.user.button("escape")),
-    "hiss": ('dodge', lambda : actions.user.button("l")),
-    "shush": ('use item', lambda : actions.user.button("r")),
-    "ll": (),
-    "tut": (),
+    # "hiss:th_200": ('dodge', lambda : actions.user.button("l")),
+    # "shush:th_400": ('use item', lambwwwda : actions.user.button("r")),
+    "ll:th_250": ('dodge', lambda : actions.user.button("l")),
+    "tut": ('use item', lambda : actions.user.button("r")),
     "alveolar_click": (),
 }
 
