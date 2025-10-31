@@ -229,12 +229,12 @@
 	"high_whistle": {
 		"sounds": ["high_whistle"],
 		"threshold": {
-			">power":60,
-			">probability": 0.95
+			">power":40,
+			">probability": 0.90
 		},
 		"graceperiod": 40,
 		"grace_threshold": {
-			">power": 50,
+			">power": 30,
 			">probability": 0.80
 		},
 		"throttle": {

@@ -63,7 +63,7 @@ default_config = {
     "hiss": ('dash start', lambda : actions.user.button_down("c")),# was oo
     "hiss_stop:db_250": ('dash stop', lambda : actions.user.button_up("c")),
     "ll": ('dash attacks start', lambda : actions.user.button_down("c")),
-    "ll_stop": ('dash attack stop', lambda : paired_command_wrapper(lambda : actions.user.button("x"), lambda : actions.user.button_up("c"))),
+    "ll_stop:db_100": ('dash attack stop', lambda : paired_command_wrapper(lambda : actions.user.button("x"), lambda : actions.user.button_up("c"))),
 
     "er": ('dash down', lambda : dash_downwards()),
 
@@ -71,14 +71,19 @@ default_config = {
     f"tut:th_{ATTACK_COOLDOWN}": ('attack up', lambda : directional_attack("up")),
     f"clock:th_{ATTACK_COOLDOWN}": ('attack down', lambda : directional_attack("down")),
     "ee": ('silk skill', lambda : actions.user.button("f")),
-    
+    "oo:th_150": ('tool up', lambda : directional_attack("up", "f:down")), # was oo
+    "oo_stop:db_100": ('tool up', lambda : actions.user.button_up("f")), # was oo
+    f"alveolar_click:th_{ATTACK_COOLDOWN}": ('tool down', lambda : directional_attack("down","f")),
+
+
     "mm:th_250": ('bind',lambda : actions.user.button("a")),
     
     "buzz:th_250": ('interact', lambda : actions.user.movement_button("up")),
     # "buzz ee": ('quick map', lambda : actions.user.button_toggle("tab")),
     
 
-    "high_whistle:th_350": ('escape menu', lambda : actions.user.button("escape")),
+    "high_whistle": ('needlolin', lambda : actions.user.button_down("d")),
+    "high_whistle_stop:db_1000": ('needlolin stop', lambda : actions.user.button_up("d")),
 }
 
 """None of this is used because the idea didn't work the way I wanted it to"""
@@ -105,6 +110,7 @@ reversed_actions = {
     f"tut:th_{ATTACK_COOLDOWN}": ('attack up', lambda : direction_switch_wrapper(lambda : directional_attack("up"))),
     f"clock:th_{ATTACK_COOLDOWN}": ('attack down', lambda : direction_switch_wrapper(lambda : directional_attack("down"))),
     "oo:th_250": ('tool up', lambda : direction_switch_wrapper(lambda : directional_attack("up", "f"))), # was oo
+    f"alveolar_click:th_{ATTACK_COOLDOWN}": ('tool down', lambda : direction_switch_wrapper(lambda : directional_attack("down","f"))),
 }
 
 # A set of overrides for the default actions that enables precise movement and menu navigation
@@ -120,6 +126,7 @@ precise_movement_actions = {
     "buzz": ('quick map', lambda : mode_switch_wrapper(lambda : actions.user.button_toggle("tab"), "default")),
     "mm": ('menu', lambda : actions.user.button("m")),
     "zh:th_250": ('dash start', lambda : mode_switch_wrapper(lambda : actions.user.button_down("c"), "default")),
+    "high_whistle:th_500": ('escape menu', lambda : actions.user.button("escape")),
 }
     
 reversed_config = {
@@ -166,10 +173,7 @@ class SilksongActions:
     def foot_switch_right_down():
         """Foot switch button right:down"""
         global parrot_config
-        if actions.user.parrot_config_get_mode() == "default":
-            actions.user.parrot_config_set_mode("precise")
-        elif actions.user.parrot_config_get_mode() == "precise":
-            actions.user.parrot_config_set_mode("default")
+        actions.user.game_stop("z")# state
 
     def foot_switch_right_up(held: bool):
         """Foot switch button right:up"""
@@ -177,7 +181,10 @@ class SilksongActions:
 
     def foot_switch_top_down():
         """Foot switch button left:down"""
-        actions.user.game_stop("z")# state
+        if actions.user.parrot_config_get_mode() == "default":
+            actions.user.parrot_config_set_mode("precise")
+        elif actions.user.parrot_config_get_mode() == "precise":
+            actions.user.parrot_config_set_mode("default")
 
     def foot_switch_top_up(held: bool):
         """Foot switch button left:up"""
