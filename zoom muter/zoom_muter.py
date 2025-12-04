@@ -50,7 +50,9 @@ def stop_entering_text():
     actions.speech.disable()
     parrot_config = default_config
     
-  
+"""One idea is to use the joysticks eight cardinal directions in order to select tools while using the zoom whiteboard tool"""
+"""may need compound noises"""
+"""momentum system may be useful for expanding vocab"""
 default_config = {
     "palate_click": ("use", lambda: actions.mouse_click(0)),
     "clock": ('repeat last',lambda: actions.core.repeat_phrase(1)),

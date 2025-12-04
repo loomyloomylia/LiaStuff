@@ -2,6 +2,10 @@ user.active_manual_game: tabletopsimulator
 mode: user.game
 -
 tag(): user.point_mapping
+tag(): user.parrot_active
+settings():
+    user.mouse_continuous_scroll_amount = 1
+    user.mouse_wheel_down_amount = 10
 
 test tabletop simulator:
     app.notify('tabletop simulator recognized')
@@ -30,6 +34,9 @@ magnify done:
 
 camera reset:
     key("r")
+
+ping:
+    key("tab")
 
 camera mode:
     key("p")
@@ -73,3 +80,6 @@ zoom in big:
 
 gamepad(right_xy:change):
     user.tabletop_joystick_pan(x,y)
+
+gamepad(r3):
+    user.tabletop_joystick_click()

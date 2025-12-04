@@ -2,7 +2,7 @@
 	"clock": {
 		"sounds": ["clock"],
 		"threshold": {
-			">power": 45,
+			">power": 35,
 			">probability": 0.90
 		},
 		"throttle": {
@@ -12,8 +12,8 @@
 	"palate_click": {
 		"sounds": ["palate_click"],
 		"threshold": {
-			">power": 15,
-			">probability": 0.80
+			">power": 20,
+			">probability": 0.8
 		},
 		"throttle": {
 			"palate_click": 0.01
@@ -33,7 +33,7 @@
 		"sounds": ["tut"],
 		"threshold": {
 			">power": 15,
-			">probability": 0.75
+			">probability": 0.95
 		},
 		"throttle": {
 			"tut": 0.1
@@ -137,8 +137,8 @@
 	"eh": {
 		"sounds": ["eh"],
 		"threshold": {
-			">power": 25,
-			">probability": 0.83
+			">power": 14,
+			">probability": 0.7
 		},
 		"throttle": {
 		}
@@ -146,13 +146,13 @@
 	"ll": {
 		"sounds": ["lll"],
 		"threshold": {
-			">power": 20,
-			">probability": 0.90
+			">power": 40,
+			">probability": 0.95
 		},
 		"graceperiod": 40,
 		"grace_threshold": {
 			">power": 20,
-			">probability": 0.8
+			">probability": 0.75
 		},
 		"throttle": {
 			"oh": 0.1
@@ -161,8 +161,8 @@
 	"hiss": {
 		"sounds": ["hiss"], 
 		"threshold": {
-			">power": 15,
-			">probability":0.7
+			">power": 7,
+			">probability":0.6
 		},
 		"graceperiod": 40,
 		"grace_threshold" : {
