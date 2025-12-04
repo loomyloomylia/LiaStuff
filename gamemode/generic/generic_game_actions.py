@@ -11,6 +11,7 @@ cron_jobs = []
 
 held_button_state = {}
 
+
 @mod.action_class
 class GenericActions:
     def button(button: str): # pyright: ignore[reportSelfClsParameterName]
@@ -163,13 +164,14 @@ class GenericActions:
         """Moves the cursor to a previously mapped point and clicks"""
         actions.user.flex_grid_go_to_point(word,1,button)
 
-    
-
-        
-
-        
-                
-        
+    def game_speech_toggle():
+        """Toggles speech and noises for use in game mode, including with lighting changes"""
+        if actions.speech.enabled():
+            actions.user.sleep_mode_color_preset()
+            actions.speech.disable()
+        else:
+            actions.speech.enable()
+            actions.user.wake_up_color_preset()
 
 @mod.action_class
 class UtilityActions:

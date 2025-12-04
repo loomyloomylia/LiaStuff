@@ -15,10 +15,10 @@ _mouse_movement_jobs = {}
 
 @mod.action_class
 class MouseMovementActions:
-    def mouse_move_relative(dx: int, dy: int):
-        """Moves the mouse using relative movement. Windows only"""
+    def mouse_move_relative(dx: int, dy: int, sensitivity_horiz: float = 1, sensitivity_vert: float = 1):
+        """Moves the mouse using relative movement. Windows only. Includes optional sensitivity value"""
         import win32api, win32con
-        win32api.mouse_event(win32con.MOUSEEVENTF_MOVE,int(dx),int(dy),0,0)
+        win32api.mouse_event(win32con.MOUSEEVENTF_MOVE,int(dx * sensitivity_horiz),int(dy * sensitivity_vert),0,0)
 
     def start_continuous_mouse_job(name: str, dx: int, dy: int, speed: float):
         """Starts a continuous mouse job moving in the specified direction at the specified speed.
@@ -43,4 +43,6 @@ class MouseMovementActions:
         print("stopping all")
         for name in _mouse_movement_jobs:
             actions.user.stop_mouse_job(name)
+
+        
         
