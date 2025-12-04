@@ -38,7 +38,6 @@ parrot(aa):
 parrot(aa:stop):
     user.parrot_config_noise("aa_stop")
 
-
 parrot(ee):
     user.parrot_config_noise("ee")
     
@@ -68,6 +67,12 @@ parrot(mm):
 
 parrot(mm:stop):
     user.parrot_config_noise("mm_stop")
+
+parrot(zh):
+    user.parrot_config_noise("zh")
+
+parrot(zh:stop):
+    user.parrot_config_noise("zh_stop")
 
 test league:
     print("working")

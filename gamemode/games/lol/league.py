@@ -56,7 +56,7 @@ def invert_mouse_position():
     angle = actions.user.get_mouse_bearing_from_center() + math.pi
     actions.user.save_mouse_position()
     actions.tracking.control_toggle(False)
-    ctrl.mouse_move(screen_width/2 + math.cos(angle) * 400, screen_height/2 + math.sin(angle) * 400)
+    ctrl.mouse_move(screen_width/2 + math.cos(angle) * 600, screen_height/2 + math.sin(angle) * 600)
     ctrl.mouse_click(button=1)
     actions.sleep(0.2)
     actions.tracking.control_toggle(True)
@@ -64,19 +64,26 @@ def invert_mouse_position():
 
 
 parrot_config = {
-    "oh": ("q",lambda: actions.user.button("q")),
-    "aa": ("w",lambda: actions.user.button("w")),
-    "ee": ("e",lambda: actions.user.button("e")),
-    "er": ("r",lambda: actions.user.button("r")),
+    "oh": ("q",lambda: actions.user.button_down("q")),
+    "oh_stop": ("q",lambda: actions.user.button_up("q")),
+    "aa": ("w",lambda: actions.user.button_down("w")),
+    "aa_stop": ("w",lambda: actions.user.button_up("w")),
+    "ee": ("e",lambda: actions.user.button_down("e")),
+    "ee_stop": ("e",lambda: actions.user.button_up("e")),
+    "er": ("r",lambda: actions.user.button_down("r")),
+    "er_stop": ("r",lambda: actions.user.button_up("r")),
     "hiss": ("right click",lambda: actions.user.mouse_drag(1)),
+    "eh": ('stop', lambda:  actions.user.button("s")),
     "hiss_stop": ("right click endp",lambda: actions.user.mouse_drag_end()),
     "clock": ("attack move",lambda: actions.user.button("a")),
     "palate_click": ('left click',lambda: actions.user.mouse_button(0)),
     #"tut": ("tab open",lambda: tab_toggle()),
     "buzz": ('recall',lambda: actions.user.button("b")),
-    "t": ("flash",lambda: actions.user.button("d")),
-    "t t": ("flash",lambda: actions.user.button("f")),
+    "mm": ("flash",lambda: actions.user.button("d")),
+    "zh": ("flash2",lambda: actions.user.button("f")),
     "shush:th_250": ('walk backwards',lambda: invert_mouse_position()),
+    "high_whistle:th_1000": ('shop menu', lambda : actions.user.button("p")),
+    "oo": ('use item slot too', lambda : actions.user.button("2")),
 }
 
 @ctx.action_class("user")

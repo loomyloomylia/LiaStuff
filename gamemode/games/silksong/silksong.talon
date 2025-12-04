@@ -87,12 +87,6 @@ parrot(zh):
 parrot(zh:stop):
     user.parrot_config_noise("zh_stop")
 
-parrot(t):
-    user.parrot_config_noise("t")
-
-parrot(g):
-    user.parrot_config_noise("g")
-
 parrot(high_whistle):
     user.parrot_config_noise("high_whistle")
 

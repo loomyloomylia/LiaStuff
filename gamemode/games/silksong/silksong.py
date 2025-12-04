@@ -41,8 +41,10 @@ def paired_command_wrapper(first: Callable, second: Callable):
     first()
     second()
 
-def direction_switch_wrapper(action: Callable):
+def direction_switch_wrapper(action: Callable, delay: float = 0.0):
     action()
+    if delay > 0.0:
+        actions.sleep(delay)
     actions.user.switch_horizontal()
 
 
@@ -62,8 +64,9 @@ default_config = {
     "shush:th_250": ('switch horizontal', lambda : actions.user.switch_horizontal()),       
     "hiss": ('dash start', lambda : actions.user.button_down("c")),# was oo
     "hiss_stop:db_250": ('dash stop', lambda : actions.user.button_up("c")),
-    "ll": ('dash attacks start', lambda : actions.user.button_down("c")),
-    "ll_stop:db_100": ('dash attack stop', lambda : paired_command_wrapper(lambda : actions.user.button("x"), lambda : actions.user.button_up("c"))),
+    # "ll": ('dash attacks start', lambda : actions.user.button_down("c")),
+    "ll:th_250": ('charge attack', lambda : actions.user.button_down("x")),
+    # "ll_stop:db_100": ('dash attack stop', lambda : paired_command_wrapper(lambda : actions.user.button("x"), lambda : actions.user.button_up("c"))),
 
     "er": ('dash down', lambda : dash_downwards()),
 
@@ -71,7 +74,7 @@ default_config = {
     f"tut:th_{ATTACK_COOLDOWN}": ('attack up', lambda : directional_attack("up")),
     f"clock:th_{ATTACK_COOLDOWN}": ('attack down', lambda : directional_attack("down")),
     "ee": ('silk skill', lambda : actions.user.button("f")),
-    "oo:th_150": ('tool up', lambda : directional_attack("up", "f:down")), # was oo
+    "oo:th_150": ('tool up', lambda : directional_attack("up", "f")), # was oo
     "oo_stop:db_100": ('tool up', lambda : actions.user.button_up("f")), # was oo
     f"alveolar_click:th_{ATTACK_COOLDOWN}": ('tool down', lambda : directional_attack("down","f")),
 
@@ -83,7 +86,7 @@ default_config = {
     
 
     "high_whistle": ('needlolin', lambda : actions.user.button_down("d")),
-    "high_whistle_stop:db_1000": ('needlolin stop', lambda : actions.user.button_up("d")),
+    "high_whistle_stop:db_1000": ()
 }
 
 """None of this is used because the idea didn't work the way I wanted it to"""
@@ -111,6 +114,7 @@ reversed_actions = {
     f"clock:th_{ATTACK_COOLDOWN}": ('attack down', lambda : direction_switch_wrapper(lambda : directional_attack("down"))),
     "oo:th_250": ('tool up', lambda : direction_switch_wrapper(lambda : directional_attack("up", "f"))), # was oo
     f"alveolar_click:th_{ATTACK_COOLDOWN}": ('tool down', lambda : direction_switch_wrapper(lambda : directional_attack("down","f"))),
+    "ll:th_250": ('charge attack', lambda : direction_switch_wrapper(lambda : actions.user.button_down("x"), 0.05)),
 }
 
 # A set of overrides for the default actions that enables precise movement and menu navigation
